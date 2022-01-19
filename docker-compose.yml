@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nginx:
+    depends_on:
+      - auth-service
+      - cards-service
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '4000:80'
+  auth-service:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./auth-service
+    volumes:
+      - /app/node_modules
+      - ./auth-service:/app
+  cards-service:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./cards-service
+    volumes:
+      - /app/node_modules
+      - ./cards-service:/app
