@@ -1,7 +1,7 @@
 {
-  "name": "auth-service",
+  "name": "cards-service",
   "version": "1.0.0",
-  "description": "Bingo Auth Service",
+  "description": "Bingo Cards Service",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
