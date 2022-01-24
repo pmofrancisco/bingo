@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: auth-service
+  template:
+    metadata:
+      labels:
+        component: auth-service
+    spec:
+      containers:
+        - name: auth-service
+          image: pmofrancisco/bingo-auth-service
+          ports:
+            - containerPort: 3000
