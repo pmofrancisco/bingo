@@ -20,8 +20,15 @@ build:
         manual:
           - src: "*.ts"
             dest: .
+    - image: pmofrancisco/bingo-graphql-service
+      context: graphql-service
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: "*.ts"
+            dest: .
 deploy:
   kubectl:
     manifests:
-      - k8s/auth-deployment.yaml
-      - k8s/cards-deployment.yaml
+      - k8s/*

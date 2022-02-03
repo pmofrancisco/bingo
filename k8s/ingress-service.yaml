@@ -23,3 +23,10 @@ spec:
                 name: auth-cluster-ip-service
                 port:
                   number: 3000
+          - path: /graphql
+            pathType: Prefix
+            backend:
+              service:
+                name: graphql-cluster-ip-service
+                port:
+                  number: 3000

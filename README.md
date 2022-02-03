@@ -25,3 +25,9 @@ kubectl create secret generic <secretname> --from-literal <key>=<value>
 kubectl get secrets
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
+
+https://github.com/stephengrider/lyrical-graphql
+Section 6.37: Apollo Client Setup
+
+https://github.com/stephengrider/auth-graphql-starter
+Section 12.79: Boilerplate Setup
