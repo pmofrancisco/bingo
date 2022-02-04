@@ -22,6 +22,7 @@ kubectl get pv
 
 CREATE AN ENCODED SECRET
 kubectl create secret generic <secretname> --from-literal <key>=<value>
+kubectl create secret generic jwt-secret --from-literal JWT_KEY=<value>
 kubectl get secrets
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
