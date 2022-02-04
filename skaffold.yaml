@@ -4,6 +4,16 @@ build:
   local:
     push: false
   artifacts:
+    - image: pmofrancisco/bingo-client
+      context: client
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: "pages/**/*.ts"
+            dest: .
+          - src: "pages/**/*.tsx"
+            dest: .
     - image: pmofrancisco/bingo-auth-service
       context: auth-service
       docker:
