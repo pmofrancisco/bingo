@@ -36,7 +36,7 @@ router.post(
         id: user.id,
         email: user.email,
       },
-      process.env.TJ_JWT_KEY!,
+      process.env.JWT_KEY!,
     );
 
     // Store it on session object
