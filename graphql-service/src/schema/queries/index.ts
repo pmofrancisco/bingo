@@ -1,11 +1,9 @@
 import { GraphQLObjectType } from 'graphql';
-import currentUser from './current-user-query';
-import user from './user-query';
+import currentUser from './current-user';
 
 export default new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
-    currentUser,
-    user,
+    currentUser
   }
 });
