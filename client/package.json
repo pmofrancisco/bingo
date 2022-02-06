@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
+    "@fluentui/font-icons-mdl2": "^8.1.21",
     "@fluentui/react": "^8.52.3",
     "@types/ramda": "^0.27.64",
     "graphql": "^16.3.0",

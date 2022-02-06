@@ -41,6 +41,7 @@ const Signup: NextPage = () => {
         onChange={(e, newValue) => setFormValues(R.assoc('email', newValue || '', formValues))}
       />
       <TextField
+        canRevealPassword
         label="Password"
         type="password"
         onChange={(e, newValue) => setFormValues(R.assoc('password', newValue || '', formValues))}
