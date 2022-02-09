@@ -1,7 +1,8 @@
-import axios from 'axios';
 import { Request } from 'express';
 import { GraphQLString } from 'graphql';
 import jwt from 'jsonwebtoken';
+
+import buildClient from '../../../api/build-client';
 import { UserType } from '../../types/user-type';
 
 type ArgsType = {
@@ -16,28 +17,34 @@ export default {
     password: { type: GraphQLString }
   },
   resolve: async (parentValue: any, args: ArgsType, req: Request) => {
-    const { data } = await axios.post(
-      `${process.env.AUTH_ROOT_URL}/api/users/signup`,
-      {
-        email: args.email,
-        password: args.password
-      }
-    );
+    try {
+      const client = buildClient();
+      const { data } = await client.post(
+        '/api/users/signup',
+        {
+          email: args.email,
+          password: args.password
+        },
+      );
 
-    // Generate JWT
-    const userJwt = jwt.sign(
-      {
-        id: data.id,
-        email: data.email,
-      },
-      process.env.JWT_KEY!,
-    );
+      // Generate JWT
+      const userJwt = jwt.sign(
+        {
+          id: data.id,
+          email: data.email,
+        },
+        process.env.JWT_KEY!,
+      );
 
-    // Store it on session object
-    req.session = {
-      jwt: userJwt,
-    };
+      // Store it on session object
+      req.session = {
+        jwt: userJwt,
+      };
 
-    return data;
+      return data;
+    } catch (err: any) {
+      throw new Error(err.response.data.errors[0].message);
+    }
+    
   }
 };

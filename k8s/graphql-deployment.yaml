@@ -16,8 +16,6 @@ spec:
         - name: graphql-service
           image: pmofrancisco/bingo-graphql-service
           env:
-            - name: AUTH_ROOT_URL
-              value: 'http://auth-cluster-ip-service:3000'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:

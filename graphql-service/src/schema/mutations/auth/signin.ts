@@ -1,7 +1,8 @@
-import axios from 'axios';
 import { Request } from 'express';
 import { GraphQLString } from 'graphql';
 import jwt from 'jsonwebtoken';
+
+import buildClient from '../../../api/build-client';
 import { UserType } from '../../types/user-type';
 
 type ArgsType = {
@@ -17,8 +18,9 @@ export default {
   },
   resolve: async (parentValue: {}, args: ArgsType, req: Request) => {
     try {
-      const { data } = await axios.post(
-        `${process.env.AUTH_ROOT_URL}/api/users/signin`,
+      const client = buildClient();
+      const { data } = await client.post(
+        `/api/users/signin`,
         {
           email: args.email,
           password: args.password
