@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import '../styles/globals.css';
@@ -9,7 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     cache: new InMemoryCache(),
   });
 
-  initializeIcons();
+  useEffect(() => {
+    initializeIcons();
+  }, []);
 
   return (
     <ApolloProvider client={client}>
